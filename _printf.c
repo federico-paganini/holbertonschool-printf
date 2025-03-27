@@ -1,10 +1,12 @@
 #include "main.h"
 #include <stdarg.h>
 #include <stddef.h>
+#include <unistd.h>
 
 /**
- * _printf - 
+ * _printf - Prints a string and arguments content.
  *
+ * @format: String to print and arguments information.
  *
  * Return: Number of characters printed.
  */
@@ -23,7 +25,7 @@ int _printf(const char *format, ...)
 			format++;
 			if (*format == '%')
 			{
-				count += _putchar(*format);
+				count += write(1, format, 1);
 				format++;
 			}
 			else
@@ -34,7 +36,7 @@ int _printf(const char *format, ...)
 		}
 		else
 		{
-			count += _putchar(*format);
+			count += write(1, format, 1);
 			format++;
 		}
 	}
