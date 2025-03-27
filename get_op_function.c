@@ -7,7 +7,7 @@
  *
  * @s: Character who indicates the print function to return.
  *
- * Return: A pointer to the function to perform the operation.
+ * Return: A pointer to the function to perform the operation, -1 in error case.
  */
 
 int (*get_op_func(const char *s))(va_list *)

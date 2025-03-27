@@ -14,14 +14,7 @@ int _print_char(va_list *arg)
 {
 	int c = va_arg(*arg, int);
 
-	if (c != '\0')
-	{
-		return (write(1, &c, 1));
-	}
-	else
-	{
-		return (0);
-	}
+	return (write(1, &c, 1));
 }
 
 /**

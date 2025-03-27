@@ -23,7 +23,7 @@ int _printf(const char *format, ...)
 		if (format[0] == '%' && format[1] == '\0')
 			return (-1);
 
-		if (format[i] == '%')
+		if (format[i] == '%' && get_op_func(&format[i + 1]) != NULL)
 		{
 			i++;
 			if (format[i] == '%')
