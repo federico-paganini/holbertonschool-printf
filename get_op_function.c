@@ -19,7 +19,7 @@ int (*get_op_func(const char *s))(va_list *)
 
 	int i = 0;
 
-	while (ops[i].id && ops[i].id != *s)
+	while (ops[i].id)
 	{
 		if (ops[i].id == *s)
 			return (ops[i].f);
