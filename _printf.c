@@ -21,14 +21,12 @@ int _printf(const char *format, ...)
 	while (format[i] != '\0')
 	{
 		if (format[0] == '%' && format[1] == '\0')
-		{
-			count += write(1, format, 1);
-			i++;
-		}
+			return (-1);
+
 		if (format[i] == '%')
 		{
 			i++;
-			if (format[i] == '%' || format[i] == '\0')
+			if (format[i] == '%')
 			{
 				count += write(1, &format[i], 1);
 				i++;
