@@ -12,15 +12,15 @@
 
 int _print_char(va_list *arg)
 {
-	int *ptr = va_arg(*arg, int *);
+	int c = va_arg(*arg, int);
 
-	if (ptr != NULL)
+	if (c != '\0')
 	{
-		return (write(1, ptr, 1));
+		return (write(1, &c, 1));
 	}
 	else
 	{
-		return (write(1, "(null)", 6));
+		return (0);
 	}
 }
 
