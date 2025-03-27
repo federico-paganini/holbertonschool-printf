@@ -1,3 +1,5 @@
+#include "main.h"
+#include <stdarg.h>
 #include <stddef.h>
 
 /**
@@ -9,7 +11,7 @@
 
 int _printf(const char *format, ...)
 {
-	unsigned int i, count = 0;
+	unsigned int count = 0;
 	va_list args;
 
 	va_start(args, format);
@@ -21,18 +23,19 @@ int _printf(const char *format, ...)
 			format++;
 			if (*format == '%')
 			{
-				count++;
-				_putchar(format);
+				count += _putchar(*format);
+				format++;
 			}
 			else
 			{
-				get_op_function(*format, va_arg(args, void));
+				count += get_op_func(format)(&args);
+				format++;
 			}
 		}
 		else
 		{
-			count++;
-			_putchar(format);
+			count += _putchar(*format);
+			format++;
 		}
 	}
 	va_end(args);
