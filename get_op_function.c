@@ -1,4 +1,4 @@
-#include "3-calc.h"
+#include "main.h"
 #include <stddef.h>
 #include <string.h>
 
@@ -10,22 +10,21 @@
  * Return: A pointer to the function to perform the operation.
  */
 
-void (*get_op_func(char *s))(void *)
+int (*get_op_func(const char *s))(va_list *)
 {
-	op_t ops[] = {
-		{'c', op_add},
-		{'s', op_sub},
-		{'d', op_mul},
-		{'i', op_div},
-		{'%', op_mod},
-		{NULL, NULL}
+	id_f ops[] = {
+		{'c', _print_char},
+		{'s', _print_str},
 	};
 
 	int i = 0;
 
-	while (ops[i].op && ops[i].op != *s)
+	while (ops[i].id && ops[i].id != *s)
 	{
+		if (ops[i].id == *s)
+			return (ops[i].f);
 		i++;
 	}
-	return (ops[i].f);
+
+	return (NULL);
 }
