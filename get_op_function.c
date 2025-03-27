@@ -15,6 +15,7 @@ int (*get_op_func(const char *s))(va_list *)
 	id_f ops[] = {
 		{'c', _print_char},
 		{'s', _print_str},
+		{'%', _print_char}
 	};
 
 	int i = 0;
