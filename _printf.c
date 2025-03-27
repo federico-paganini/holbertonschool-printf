@@ -13,31 +13,36 @@
 
 int _printf(const char *format, ...)
 {
-	unsigned int count = 0;
+	unsigned int i = 0, count = 0;
 	va_list args;
 
 	va_start(args, format);
 
-	while (*format != '\0')
+	while (format[i] != '\0')
 	{
-		if (*format == '%')
+		if (format[0] == '%' && format[1] == '\0')
 		{
-			format++;
-			if (*format == '%')
+			count += write(1, format, 1);
+			i++;
+		}
+		if (format[i] == '%')
+		{
+			i++;
+			if (format[i] == '%' || format[i] == '\0')
 			{
-				count += write(1, format, 1);
-				format++;
+				count += write(1, &format[i], 1);
+				i++;
 			}
 			else
 			{
-				count += get_op_func(format)(&args);
-				format++;
+				count += get_op_func(&format[i])(&args);
+				i++;
 			}
 		}
 		else
 		{
-			count += write(1, format, 1);
-			format++;
+			count += write(1, &format[i], 1);
+			i++;
 		}
 	}
 	va_end(args);
