@@ -73,7 +73,7 @@ int _print_rev(va_list *args)
 
 	while (length >= 0)
 	{
-		write(1, &str[length], 1);
+		count += write(1, &str[length], 1);
 		length--;
 	}
 
