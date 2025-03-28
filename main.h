@@ -19,11 +19,33 @@ typedef struct id
 	int (*f)(va_list *);
 } id_f;
 
+/**
+ * struct parameters - Struct to handle _printf flags.
+ *
+ * @flag: Flags to handle format.
+ * @width: Parameter to handle minimum output width.
+ * @precs: Parameter to specify number of digits of decimals
+ * or max string length.
+ * @length: Length modifiers for numbers variables bigger than int.
+ * @dataid: Data type passed to function.
+ */
+
+typedef struct parameters
+{
+	char *flag;
+	char *width;
+	char *precs;
+	char *length;
+	char *dataid;
+} Params;
+
 int (*get_op_func(const char *))(va_list *);
 int _putchar(char);
 int _print_char(va_list *);
 int _print_str(va_list *);
 int _str_len(char *);
 int _print_int(va_list *);
+int _print_binary(va_list *);
+int _print_uint(va_list *);
 
 #endif
