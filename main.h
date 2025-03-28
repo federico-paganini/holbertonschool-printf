@@ -47,5 +47,6 @@ int _str_len(char *);
 int _print_int(va_list *);
 int _print_binary(va_list *);
 int _print_uint(va_list *);
+int _print_rev(va_list *);
 
 #endif

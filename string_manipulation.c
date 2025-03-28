@@ -56,3 +56,26 @@ int _str_len(char *str)
 
 	return (length);
 }
+
+/**
+ * _print_rev - Prints a string, in reverse.
+ *
+ * @args: Arguments list.
+ *
+ * Return: Number of chars printed.
+ */
+
+int _print_rev(va_list *args)
+{
+	char *str = va_arg(*args, char *);
+	int length = _str_len(str);
+	int count = 0;
+
+	while (length >= 0)
+	{
+		write(1, &str[length], 1);
+		length--;
+	}
+
+	return (count);
+}
