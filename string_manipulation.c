@@ -1,6 +1,7 @@
 #include "main.h"
 #include <stdarg.h>
 #include <unistd.h>
+#include <stdlib.h>
 
 /**
  * _print_char - Writes the character passed to func to stdout.
@@ -31,30 +32,12 @@ int _print_str(va_list *arg)
 
 	if (ptr != NULL)
 	{
-		return (write(1, ptr, _str_len(ptr)));
+		return (write(1, ptr, _strlen(ptr)));
 	}
 	else
 	{
 		return (write(1, "(null)", 6));
 	}
-}
-
-/**
- * _str_len - Calculates the length of a string.
- *
- * @str: String to evaluate.
- *
- * Return: The length of the string.
- */
-
-int _str_len(char *str)
-{
-	unsigned int length = 0;
-
-	while (str[length] != '\0')
-		length++;
-
-	return (length);
 }
 
 /**
@@ -68,13 +51,51 @@ int _str_len(char *str)
 int _print_rev(va_list *args)
 {
 	char *str = va_arg(*args, char *);
-	int length = _str_len(str) - 1;
+	int length = _strlen(str) - 1;
 	int count = 0;
 
 	while (length >= 0)
 	{
 		count += write(1, &str[length], 1);
 		length--;
+	}
+
+	return (count);
+}
+
+/**
+ * _print_rot13 - Encodes a string into rot13.
+ *
+ * @args: Arguments recived from _printf.
+ *
+ * Return: Pointer.
+ */
+
+int _print_rot13(va_list *args)
+{
+	int j, i = 0, count = 0;
+	char *str = va_arg(*args, char *);
+	char *copy = _strdup(str);
+	const char *charset = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz";
+	const char *code = "NOPQRSTUVWXYZABCDEFGHIJKLMnopqrstuvwxyzabcdefghijklm";
+
+	while (copy[i] != '\0')
+	{
+		for (j = 0; j < 52; j++)
+		{
+			if (copy[i] == charset[j])
+			{
+				copy[i] = code[j];
+				break;
+			}
+		}
+		i++;
+	}
+
+	while (*copy != '\0')
+	{
+		count += write(1, copy, 1);
+		copy++;
 	}
 
 	return (count);

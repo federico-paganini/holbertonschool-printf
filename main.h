@@ -43,10 +43,12 @@ int (*get_op_func(const char *))(va_list *);
 int _putchar(char);
 int _print_char(va_list *);
 int _print_str(va_list *);
-int _str_len(char *);
+int _strlen(char *);
 int _print_int(va_list *);
 int _print_binary(va_list *);
 int _print_uint(va_list *);
 int _print_rev(va_list *);
+int _print_rot13(va_list *);
+char *_strdup(char *);
 
 #endif
