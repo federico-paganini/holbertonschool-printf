@@ -68,7 +68,7 @@ int _str_len(char *str)
 int _print_rev(va_list *args)
 {
 	char *str = va_arg(*args, char *);
-	int length = _str_len(str);
+	int length = _str_len(str) - 1;
 	int count = 0;
 
 	while (length >= 0)
