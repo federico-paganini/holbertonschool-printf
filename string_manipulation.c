@@ -79,6 +79,9 @@ int _print_rot13(va_list *args)
 	const char *charset = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz";
 	const char *code = "NOPQRSTUVWXYZABCDEFGHIJKLMnopqrstuvwxyzabcdefghijklm";
 
+	if (copy == NULL)
+		return (1);
+
 	while (copy[i] != '\0')
 	{
 		for (j = 0; j < 52; j++)
@@ -97,6 +100,7 @@ int _print_rot13(va_list *args)
 		count += write(1, copy, 1);
 		copy++;
 	}
+	free(copy);
 
 	return (count);
 }
