@@ -14,8 +14,11 @@
 int _printf(const char *format, ...)
 {
 	unsigned int i = 0, count = 0;
+	/*char *flag = NULL, *length = NULL, *width = NULL, *precs = NULL;*/
+	/*char dataid = '\0';*/
 	va_list args;
 
+	/*Params params;*/
 	va_start(args, format);
 
 	while (format[i] != '\0')
