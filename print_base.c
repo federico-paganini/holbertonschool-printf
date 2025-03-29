@@ -77,7 +77,7 @@ int _print_hex(va_list *args)
 	unsigned int num = va_arg(*args, unsigned int);
 	int i = 0, count = 0;
 	char hexDigits[] = "0123456789abcdef";
-	char hex[50];
+	char hex[16];
 
 	if (num == 0)
 		return (write(1, "0", 1));
@@ -107,7 +107,7 @@ int _print_hexa(va_list *args)
 	unsigned int num = va_arg(*args, unsigned int);
 	int i = 0, count = 0;
 	char hexDigits[] = "0123456789ABCDEF";
-	char hex[50];
+	char hex[16];
 
 	if (num == 0)
 		return (write(1, "0", 1));
@@ -120,6 +120,38 @@ int _print_hexa(va_list *args)
 
 	while (i--)
 		count += write(1, &hex[i], 1);
+
+	return (count);
+}
+
+/**
+ * _print_ptr - Prints the memory adress of a pointer.
+ *
+ * @args: Arguments recived from _printf.
+ *
+ * Return: Number of chars printed.
+ */
+
+int _print_ptr(va_list *args)
+{
+	unsigned long numadr = (unsigned long)va_arg(*args, void *);
+	int i = 0, count = 0;
+	char hexDigits[] = "0123456789abcdef";
+	char adress[16];
+
+	if (numadr == 0)
+		return (write(1, "0x0", 3));
+
+	while (numadr != 0)
+	{
+		adress[i++] = hexDigits[numadr % 16];
+		numadr = numadr / 16;
+	}
+
+	count += write(1, "0x", 2);
+
+	while (i--)
+		count += write(1, &adress[i], 1);
 
 	return (count);
 }
