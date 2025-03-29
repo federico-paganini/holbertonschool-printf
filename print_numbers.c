@@ -43,39 +43,6 @@ int _print_int(va_list *args)
 }
 
 /**
- * _print_binary - Prints an unsigned int in binary.
- *
- * @args: Arguments list.
- *
- * Return: Printed chars count.
- */
-
-int _print_binary(va_list *args)
-{
-	unsigned int num = va_arg(*args, unsigned int);
-	unsigned int bits = sizeof(num) * 8;
-	int i = 0, leading = 1, count = 0;
-
-	for (i = bits - 1; i >= 0; i--)
-	{
-		if (num & (1 << i))
-		{
-			leading = 0;
-			count += write(1, "1", 1);
-		}
-		else if (!leading)
-		{
-			count += write(1, "0", 1);
-		}
-	}
-
-	if (leading)
-		count += write(1, "0", 1);
-
-	return (count);
-}
-
-/**
  * _print_uint - Prints an unsigned int.
  *
  * @args: Arguments to iterate.

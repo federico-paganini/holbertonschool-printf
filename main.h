@@ -30,14 +30,15 @@ typedef struct id
  * @dataid: Data type passed to function.
  */
 
-typedef struct parameters
-{
-	char *flag;
-	char *width;
-	char *precs;
-	char *length;
-	char *dataid;
-} Params;
+/**typedef struct parameters
+ *{
+ *char *flag;
+ *	char *width;
+ *	char *precs;
+ *	char *length;
+ *	char *dataid;
+ *} Params;
+ */
 
 int (*get_op_func(const char *))(va_list *);
 int _putchar(char);
@@ -49,6 +50,9 @@ int _print_binary(va_list *);
 int _print_uint(va_list *);
 int _print_rev(va_list *);
 int _print_rot13(va_list *);
+int _print_oct(va_list *);
+int _print_hex(va_list *);
+int _print_hexa(va_list *);
 char *_strdup(char *);
 
 #endif
