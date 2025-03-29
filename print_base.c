@@ -1,6 +1,7 @@
 #include "main.h"
 #include <unistd.h>
 #include <stdarg.h>
+#include <stdio.h>
 
 /**
  * _print_binary - Prints an unsigned int in binary.
@@ -134,10 +135,16 @@ int _print_hexa(va_list *args)
 
 int _print_ptr(va_list *args)
 {
-	unsigned long numadr = (unsigned long)va_arg(*args, void *);
+	void *ptr = va_arg(*args, void *);
+	unsigned long numadr;
 	int i = 0, count = 0;
 	char hexDigits[] = "0123456789abcdef";
 	char adress[16];
+
+	if (ptr == NULL)
+		return (write(1, "(nil)", 5));
+
+	numadr = (unsigned long)ptr;
 
 	if (numadr == 0)
 		return (write(1, "0x0", 3));
