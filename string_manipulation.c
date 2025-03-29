@@ -136,6 +136,7 @@ int _print_S(va_list *args)
 			hex[3] = (c % 16 < 10) ? ('0' + (c % 16)) : ('A' + (c % 16) - 10);
 			count += write(1, hex, 4);
 		}
+		i++;
 	}
 
 	return (count);
