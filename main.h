@@ -54,6 +54,7 @@ int _print_oct(va_list *);
 int _print_hex(va_list *);
 int _print_hexa(va_list *);
 int _print_ptr(va_list *);
+int _print_S(va_list *);
 char *_strdup(char *);
 
 #endif

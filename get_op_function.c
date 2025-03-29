@@ -17,7 +17,7 @@ int (*get_op_func(const char *s))(va_list *)
 		{'i', _print_int}, {'d', _print_int}, {'b', _print_binary},
 		{'u', _print_uint}, {'r', _print_rev}, {'R', _print_rot13},
 		{'o', _print_oct}, {'x', _print_hex}, {'X', _print_hexa},
-		{'p', _print_ptr}
+		{'p', _print_ptr}, {'S', _print_S}
 	};
 
 	int i = 0;

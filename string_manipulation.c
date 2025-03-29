@@ -104,3 +104,39 @@ int _print_rot13(va_list *args)
 
 	return (count);
 }
+
+/**
+ * _print_S - Prints a string and characters less tan 32 and bigger than 126
+ * in ASCII code, encripted.
+ *
+ * @args: Arguments recived from _printf.
+ *
+ * Return: Number of characters printed.
+ */
+
+int _print_S(va_list *args)
+{
+	char *str = va_arg(*args, char*);
+	int count = 0;
+	char hex[4];
+
+	while (str[i] != '\0')
+	{
+		char c = str[i];
+
+		if (c > 31 && c < 127)
+		{
+			count += write(1, &c, 1);
+		}
+		else
+		{
+			hex[0] = '\\';
+			hex[1] = 'x';
+			hex[2] = (c / 16 < 10) ? ('0' + (c / 16)) : ('A' + (c / 16) - 10);
+			hex[3] = (c % 16 < 10) ? ('0' + (c % 16)) : ('A' + (c % 16) - 10);
+			count += write(1, hex, 4);
+		}
+	}
+
+	return (count);
+}
