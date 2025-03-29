@@ -117,7 +117,7 @@ int _print_rot13(va_list *args)
 int _print_S(va_list *args)
 {
 	char *str = va_arg(*args, char*);
-	int count = 0;
+	int count = 0, i = 0;
 	char hex[4];
 
 	while (str[i] != '\0')
